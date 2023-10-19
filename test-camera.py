@@ -1,21 +1,30 @@
 import cv2
 
-# Initialize the camera
-cap = cv2.VideoCapture(1)
 
-# Check if the camera opened successfully
-if not cap.isOpened():
-    print("Error: Could not open camera.")
-    exit()
+def check_camera(index):
+    """Check if a camera with a given index is available."""
+    cap = cv2.VideoCapture(index)
+    if not cap.isOpened():
+        cap.release()
+        return False
+    cap.release()
+    return True
 
-# Capture a single frame
-ret, frame = cap.read()
 
-# Save the captured frame if it's valid
-if ret:
-    cv2.imwrite("captured_image.jpg", frame)
-else:
-    print("Error: Could not capture an image.")
+def list_cameras(max_cameras=10):
+    """List all available cameras up to a specified maximum."""
+    available_cameras = []
+    for i in range(max_cameras):
+        if check_camera(i):
+            available_cameras.append(i)
+    return available_cameras
 
-# Release the camera
-cap.release()
+
+if __name__ == "__main__":
+    cameras = list_cameras()
+    if cameras:
+        print("Available cameras are:")
+        for cam in cameras:
+            print(f"Camera {cam}")
+    else:
+        print("No cameras available.")
