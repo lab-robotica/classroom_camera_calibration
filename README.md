@@ -25,3 +25,7 @@ Then you need *chessboard pictures* in order to calibrate the camera. You need a
 - **Opencv** must be able to find the chessboard with the function  `cv.findChessboardCorners`
 
 Then save the images under `./uncalibrated-images/<model_name>`. Then, run the script `./calibrate.py`, changing the `MODEL_NAME` variable to match the `<model_name>`
+
+# References
+
+- [Code for camera calibration](https://github.com/niconielsen32/CameraCalibration)
