@@ -17,6 +17,8 @@ FRAME_SIZE = (640, 480)
 
 # Check image path
 UNCALIBRATED_IMAGES_PATH = Path(".") / "uncalibrated-images" / MODEL_NAME
+CALIBRATED_IMAGE_PATH = Path(".") / "calibrated-images" / MODEL_NAME
+CALIBRATED_IMAGE_PATH.mkdir(parents=True, exist_ok=True)
 
 if not UNCALIBRATED_IMAGES_PATH.exists():
     raise Exception(f"Path {UNCALIBRATED_IMAGES_PATH} does not exist")

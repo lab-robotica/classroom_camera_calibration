@@ -11,6 +11,7 @@ from configuration import (
     IMAGE_EXTENSIONS,
     FRAME_SIZE,
     UNCALIBRATED_IMAGES_PATH,
+    CALIBRATED_IMAGE_PATH,
 )
 
 ################ FIND CHESSBOARD CORNERS - OBJECT POINTS AND IMAGE POINTS #############################
@@ -89,7 +90,7 @@ dst = cv.undistort(img, cameraMatrix, dist, None, newCameraMatrix)
 # crop the image
 x, y, w, h = roi
 dst = dst[y : y + h, x : x + w]
-cv.imwrite("caliResult1.png", dst)
+cv.imwrite(f"{CALIBRATED_IMAGE_PATH.absolute()}/caliResult1.png", dst)
 
 
 # Undistort with Remapping
@@ -101,7 +102,7 @@ dst = cv.remap(img, mapx, mapy, cv.INTER_LINEAR)
 # crop the image
 x, y, w, h = roi
 dst = dst[y : y + h, x : x + w]
-cv.imwrite("caliResult2.png", dst)
+cv.imwrite(f"{CALIBRATED_IMAGE_PATH.absolute()}/caliResult2.png", dst)
 
 
 # Reprojection Error
