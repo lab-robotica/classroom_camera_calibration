@@ -2,7 +2,7 @@
 # Adapted by G00Z-G00Z
 
 import cv2
-from configuration import IMAGES_PATH
+from configuration import UNCALIBRATED_IMAGES_PATH
 
 cap = cv2.VideoCapture(
     2
@@ -19,7 +19,7 @@ while cap.isOpened():
         break
     elif k == ord("s"):  # wait for 's' key to save and exit
         img_name = f"{num}.png"
-        cv2.imwrite(f"{IMAGES_PATH.absolute()}{img_name}", img)
+        cv2.imwrite(f"{UNCALIBRATED_IMAGES_PATH.absolute()}{img_name}", img)
         print("Image saved: " + img_name)
         num += 1
 

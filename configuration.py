@@ -16,10 +16,10 @@ FRAME_SIZE = (640, 480)
 # Tests for correct data
 
 # Check image path
-IMAGES_PATH = Path(".") / "uncalibrated-images" / MODEL_NAME
+UNCALIBRATED_IMAGES_PATH = Path(".") / "uncalibrated-images" / MODEL_NAME
 
-if not IMAGES_PATH.exists():
-    raise Exception(f"Path {IMAGES_PATH} does not exist")
+if not UNCALIBRATED_IMAGES_PATH.exists():
+    raise Exception(f"Path {UNCALIBRATED_IMAGES_PATH} does not exist")
 
 # Check even x odd chessboard size
 if CHESSBOARD_SIZE[0] % 2 == 0:

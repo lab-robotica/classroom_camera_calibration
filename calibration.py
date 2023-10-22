@@ -10,15 +10,15 @@ from configuration import (
     CHESSBOARD_SIZE,
     IMAGE_EXTENSIONS,
     FRAME_SIZE,
-    IMAGES_PATH,
+    UNCALIBRATED_IMAGES_PATH,
 )
 
 ################ FIND CHESSBOARD CORNERS - OBJECT POINTS AND IMAGE POINTS #############################
 
 # Tests data
 
-if not IMAGES_PATH.exists():
-    raise Exception(f"Path {IMAGES_PATH} does not exist")
+if not UNCALIBRATED_IMAGES_PATH.exists():
+    raise Exception(f"Path {UNCALIBRATED_IMAGES_PATH} does not exist")
 
 
 # termination criteria
@@ -38,7 +38,7 @@ objpoints = []  # 3d point in real world space
 imgpoints = []  # 2d points in image plane.
 
 
-images = glob.glob(f"{IMAGES_PATH.absolute()}/*.{IMAGE_EXTENSIONS}")
+images = glob.glob(f"{UNCALIBRATED_IMAGES_PATH.absolute()}/*.{IMAGE_EXTENSIONS}")
 
 for image in images:
     img = cv.imread(image)
