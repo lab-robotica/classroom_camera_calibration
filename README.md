@@ -1,9 +1,7 @@
 # General Camera Calibration
 
 OpenCV method for calibrating cameras with python. This repo follows the
-[tutorial](https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html). Also here is a video that also explains it very good.
-
-![Video explaining camera calibration](https://www.youtube.com/watch?v=3h7wgR5fYik)
+[tutorial](https://docs.opencv.org/4.x/dc/dbb/tutorial_py_calibration.html). Also here is a [Video explaining camera calibration](https://www.youtube.com/watch?v=3h7wgR5fYik) that also explains it very good 
 
 # Cameras Calibrated
 
