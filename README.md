@@ -11,7 +11,18 @@ OpenCV method for calibrating cameras with python. This repo follows the
 | ---- | ----- | --- | 
 | Web Cam Lab | web_cam | no | 
 
-# Setup
+# Instructions
+
+To correctly calibrate the camera, you can follow the instructions bellow: 
+
+## Overview
+
+1. Install the dependencies
+2. Fill the configuration in `configuration.py`
+3. Get not calibrated image using: `getImages.py`
+4. Calibrate the camera using `calibration.py`
+
+## Setup
 
 Install the following: 
 
@@ -26,6 +37,10 @@ Then you need *chessboard pictures* in order to calibrate the camera. You need a
 
 Then save the images under `./uncalibrated-images/<model_name>`. Then, run the script `./calibrate.py`, changing the `MODEL_NAME` variable to match the `<model_name>`
 
+**You can use the utility script:** `getImages.py` **to get the images in the right place**
+
+Then , use the `calibration.py` script to calibrate them.
+
 # References
 
-- [Code for camera calibration](https://github.com/niconielsen32/CameraCalibration)
+- [Code to get the images and calibrate camera](https://github.com/niconielsen32/CameraCalibration)
