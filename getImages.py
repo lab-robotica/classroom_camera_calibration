@@ -2,6 +2,7 @@
 # Adapted by G00Z-G00Z
 
 import cv2
+from configuration import IMAGES_PATH
 
 cap = cv2.VideoCapture(
     2
@@ -17,8 +18,9 @@ while cap.isOpened():
     if k == 27:
         break
     elif k == ord("s"):  # wait for 's' key to save and exit
-        cv2.imwrite("images/img" + str(num) + ".png", img)
-        print("image saved!")
+        img_name = f"{num}.png"
+        cv2.imwrite(f"{IMAGES_PATH.absolute()}{img_name}", img)
+        print("Image saved: " + img_name)
         num += 1
 
     cv2.imshow("Img", img)

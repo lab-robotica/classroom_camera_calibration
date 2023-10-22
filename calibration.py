@@ -6,16 +6,16 @@ import cv2 as cv
 import glob
 import pickle
 from pathlib import Path
-
+from configuration import (
+    CHESSBOARD_SIZE,
+    IMAGE_EXTENSIONS,
+    FRAME_SIZE,
+    IMAGES_PATH,
+)
 
 ################ FIND CHESSBOARD CORNERS - OBJECT POINTS AND IMAGE POINTS #############################
 
 # Tests data
-MODEL_NAME = "lab_web_cam"
-CHESSBOARD_SIZE = (9, 6)
-IMAGE_EXTENSIONS = "jpg"  # png, jpg, jpeg, bmp, tiff, tif, pgm, ppm, pbm, sr, ras, jp2, j2k, jpf, jpx, jpm, mj2 ...
-FRAME_SIZE = (640, 480)
-IMAGES_PATH = Path(".") / "uncalibrated-images" / MODEL_NAME
 
 if not IMAGES_PATH.exists():
     raise Exception(f"Path {IMAGES_PATH} does not exist")
