@@ -24,7 +24,7 @@ while cap.isOpened():
         break
     elif k == ord("s"):  # wait for 's' key to save and exit
         img_name = f"{num}.png"
-        cv2.imwrite(f"{UNCALIBRATED_IMAGES_PATH.absolute()}{img_name}", img)
+        cv2.imwrite(f"{UNCALIBRATED_IMAGES_PATH.absolute()}/{img_name}", img)
         print("Image saved: " + img_name)
         num += 1
 
