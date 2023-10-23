@@ -1,3 +1,8 @@
+"""
+Este script toma fotos de la cámara y las guarda en la carpeta uncalibrated-images
+
+Cuando se active, guardas la foto con "s" y te sales con <esc>
+"""
 # Original code from https://github.com/niconielsen32/CameraCalibration
 # Adapted by G00Z-G00Z
 
