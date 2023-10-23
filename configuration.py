@@ -8,7 +8,7 @@ from pathlib import Path
 
 # Test data
 MODEL_NAME = "lab_web_cam"
-CHESSBOARD_SIZE = (9, 6)
+CHESSBOARD_SIZE = (6, 9)
 IMAGE_EXTENSIONS = "jpg"  # png, jpg, jpeg, bmp, tiff, tif, pgm, ppm, pbm, sr, ras, jp2, j2k, jpf, jpx, jpm, mj2 ...
 FRAME_SIZE = (640, 480)
 
@@ -24,7 +24,7 @@ if not UNCALIBRATED_IMAGES_PATH.exists():
     raise Exception(f"Path {UNCALIBRATED_IMAGES_PATH} does not exist")
 
 # Check even x odd chessboard size
-if CHESSBOARD_SIZE[0] % 2 == 0:
-    raise Exception("CHESSBOARD_SIZE[0] must be odd")
+if CHESSBOARD_SIZE[0] % 2 != 0:
+    raise Exception("CHESSBOARD_SIZE[0] must be even")
 if CHESSBOARD_SIZE[1] % 2 == 0:
     raise Exception("CHESSBOARD_SIZE[1] must be odd")
