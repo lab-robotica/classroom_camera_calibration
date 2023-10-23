@@ -10,7 +10,7 @@ from pathlib import Path
 MODEL_NAME = "logitech-c920-1"
 CHESSBOARD_SIZE = (16, 19)
 IMAGE_EXTENSIONS = "jpg"  # png, jpg, jpeg, bmp, tiff, tif, pgm, ppm, pbm, sr, ras, jp2, j2k, jpf, jpx, jpm, mj2 ...
-FRAME_SIZE = (400, 400)
+FRAME_SIZE = (1000, 1000)
 
 
 # Tests for correct data
