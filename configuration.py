@@ -7,10 +7,10 @@ The test data variables will be used to test the script
 from pathlib import Path
 
 # Test data
-MODEL_NAME = "lab_web_cam"
-CHESSBOARD_SIZE = (6, 9)
+MODEL_NAME = "logitech-c920-1"
+CHESSBOARD_SIZE = (16, 19)
 IMAGE_EXTENSIONS = "jpg"  # png, jpg, jpeg, bmp, tiff, tif, pgm, ppm, pbm, sr, ras, jp2, j2k, jpf, jpx, jpm, mj2 ...
-FRAME_SIZE = (640, 480)
+FRAME_SIZE = (400, 400)
 
 
 # Tests for correct data
