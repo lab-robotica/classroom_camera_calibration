@@ -29,6 +29,9 @@ Install the following:
 
 Then you need *chessboard pictures* in order to calibrate the camera. You need a chessboard with a known *mxn* grid (where **m** is even and **n** is odd). Then you need to take **at least 14 images** with the following requirements: 
 
+**For taking the chessboard dimensions, count the squares in a border, and substract 1**
+
+
 - The must be taken with a **static camera** (the camera is fixed and the chessboard is the only thing that moves)
 - The images must display the chessboard in different positions, rotations, and small perspective changes (skewed)
 - **Opencv** must be able to find the chessboard with the function  `cv.findChessboardCorners`
