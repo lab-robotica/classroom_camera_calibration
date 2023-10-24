@@ -60,7 +60,7 @@ for image in images:
     # Draw and display the corners
     cv.drawChessboardCorners(img, CHESSBOARD_SIZE, corners2, ret)
     cv.imshow("img", img)
-    cv.waitKey(1000)
+    # cv.waitKey(0)
 
 
 cv.destroyAllWindows()
@@ -80,32 +80,22 @@ pickle.dump(dist, open("dist.pkl", "wb"))
 
 ############## UNDISTORTION #####################################################
 
-img = cv.imread("cali5.png")
+img = cv.imread("./uncalibrated-images/logitech-c920-1/1.png")
 h, w = img.shape[:2]
 newCameraMatrix, roi = cv.getOptimalNewCameraMatrix(
     cameraMatrix, dist, (w, h), 1, (w, h)
 )
-
 
 # Undistort
 dst = cv.undistort(img, cameraMatrix, dist, None, newCameraMatrix)
 
 # crop the image
 x, y, w, h = roi
-dst = dst[y : y + h, x : x + w]
-cv.imwrite(f"{CALIBRATED_IMAGE_PATH.absolute()}/caliResult1.png", dst)
-
-
-# Undistort with Remapping
-mapx, mapy = cv.initUndistortRectifyMap(
-    cameraMatrix, dist, None, newCameraMatrix, (w, h), 5
-)
-dst = cv.remap(img, mapx, mapy, cv.INTER_LINEAR)
-
-# crop the image
-x, y, w, h = roi
-dst = dst[y : y + h, x : x + w]
-cv.imwrite(f"{CALIBRATED_IMAGE_PATH.absolute()}/caliResult2.png", dst)
+# dst = dst[y : y + h, x : x + w]
+cv.imshow("calibrated", dst)
+cv.waitKey(0)
+cv.destroyAllWindows()
+# cv.imwrite(f"{CALIBRATED_IMAGE_PATH.absolute()}/1.png", dst)
 
 
 # Reprojection Error
