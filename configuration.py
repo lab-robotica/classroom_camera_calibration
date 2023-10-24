@@ -5,12 +5,37 @@ Change the variables to suit your needs
 The test data variables will be used to test the script
 """
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
-# Test data
-MODEL_NAME = "logitech-c920-1"
-CHESSBOARD_SIZE = (18, 15)
-IMAGE_EXTENSIONS = "png"  # png, jpg, jpeg, bmp, tiff, tif, pgm, ppm, pbm, sr, ras, jp2, j2k, jpf, jpx, jpm, mj2 ...
-FRAME_SIZE = (1000, 1000)
+
+# Load environment variables
+load_dotenv()
+
+## Test data
+MODEL_NAME = os.getenv("MODEL_NAME", "")
+CHESSBOARD_SIZE_EVEN = os.getenv("CHESSBOARD_SIZE_EVEN", "")
+CHESSBOARD_SIZE_ODD = os.getenv("CHESSBOARD_SIZE_ODD", "")
+IMAGE_EXTENSIONS = os.getenv("IMAGE_EXTENSIONS", "")
+FRAME_SIZE_WIDTH = os.getenv("FRAME_SIZE_WIDTH", "")
+FRAME_SIZE_HEIGHT = os.getenv("FRAME_SIZE_HEIGHT", "")
+
+if not all(
+    [
+        MODEL_NAME,
+        CHESSBOARD_SIZE_EVEN,
+        CHESSBOARD_SIZE_ODD,
+        IMAGE_EXTENSIONS,
+        FRAME_SIZE_WIDTH,
+        FRAME_SIZE_HEIGHT,
+    ]
+):
+    raise Exception(
+        "Please check your environment variables! It appears that some are missing"
+    )
+
+CHESSBOARD_SIZE = (int(CHESSBOARD_SIZE_EVEN), int(CHESSBOARD_SIZE_ODD))
+FRAME_SIZE = (int(FRAME_SIZE_WIDTH), int(FRAME_SIZE_HEIGHT))
 
 
 # Tests for correct data
