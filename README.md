@@ -38,14 +38,14 @@ The fill in the **environment variables** in the `.env` file (you can use the `.
 | IMAGE_EXTENSIONS     | str  | Image extension      | png                |
 | MODEL_NAME           | str  | Model of the camera  | logitech-model-100 |
 
-
+To see the calibration of some of the tests made, look into [cameras-configuration](cameras-configuration.csv)
 
 Then you need *chessboard pictures* in order to calibrate the camera. You need
 a chessboard with a known *mxn* grid (where **m** is even and **n** is odd).
 
 Then you need to take **at least 14 images** with the following requirements: 
 
-**For taking the chessboard dimensions, count the squares in a border, and substract 1**
+**For taking the chessboard dimensions, count the squares in a border, and subtract 1**
 
 - The must be taken with a **static camera** (the camera is fixed and the chessboard is the only thing that moves)
 - The images must display the chessboard in different positions, rotations, and small perspective changes (skewed)
