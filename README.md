@@ -27,10 +27,25 @@ Install the following:
 - python
 - opencv
 
-Then you need *chessboard pictures* in order to calibrate the camera. You need a chessboard with a known *mxn* grid (where **m** is even and **n** is odd). Then you need to take **at least 14 images** with the following requirements: 
+The fill in the **environment variables** in the `.env` file (you can use the `.env.example` as reference):
+
+| Variable             | Type | Description          | Example            |
+| --------             | ---- | -----------          | -------            |
+| CHESSBOARD_SIZE_EVEN | int  | Chessboard side even | 16                 |
+| CHESSBOARD_SIZE_ODD  | int  | Chessboard side odd  | 19                 |
+| FRAME_SIZE_HEIGHT    | int  | Frame size in pixels | 1000               |
+| FRAME_SIZE_WIDTH     | int  | Frame size in pixels | 1000               |
+| IMAGE_EXTENSIONS     | str  | Image extension      | png                |
+| MODEL_NAME           | str  | Model of the camera  | logitech-model-100 |
+
+
+
+Then you need *chessboard pictures* in order to calibrate the camera. You need
+a chessboard with a known *mxn* grid (where **m** is even and **n** is odd).
+
+Then you need to take **at least 14 images** with the following requirements: 
 
 **For taking the chessboard dimensions, count the squares in a border, and substract 1**
-
 
 - The must be taken with a **static camera** (the camera is fixed and the chessboard is the only thing that moves)
 - The images must display the chessboard in different positions, rotations, and small perspective changes (skewed)
