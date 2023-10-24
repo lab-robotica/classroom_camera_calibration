@@ -5,12 +5,37 @@ Change the variables to suit your needs
 The test data variables will be used to test the script
 """
 from pathlib import Path
+from dotenv import load_dotenv
+import os
 
-# Test data
-MODEL_NAME = "lab_web_cam"
-CHESSBOARD_SIZE = (6, 9)
-IMAGE_EXTENSIONS = "jpg"  # png, jpg, jpeg, bmp, tiff, tif, pgm, ppm, pbm, sr, ras, jp2, j2k, jpf, jpx, jpm, mj2 ...
-FRAME_SIZE = (640, 480)
+
+# Load environment variables
+load_dotenv()
+
+## Test data
+MODEL_NAME = os.getenv("MODEL_NAME", "")
+CHESSBOARD_SIZE_EVEN = os.getenv("CHESSBOARD_SIZE_EVEN", "")
+CHESSBOARD_SIZE_ODD = os.getenv("CHESSBOARD_SIZE_ODD", "")
+IMAGE_EXTENSIONS = os.getenv("IMAGE_EXTENSIONS", "")
+FRAME_SIZE_WIDTH = os.getenv("FRAME_SIZE_WIDTH", "")
+FRAME_SIZE_HEIGHT = os.getenv("FRAME_SIZE_HEIGHT", "")
+
+if not all(
+    [
+        MODEL_NAME,
+        CHESSBOARD_SIZE_EVEN,
+        CHESSBOARD_SIZE_ODD,
+        IMAGE_EXTENSIONS,
+        FRAME_SIZE_WIDTH,
+        FRAME_SIZE_HEIGHT,
+    ]
+):
+    raise Exception(
+        "Please check your environment variables! It appears that some are missing"
+    )
+
+CHESSBOARD_SIZE = (int(CHESSBOARD_SIZE_EVEN), int(CHESSBOARD_SIZE_ODD))
+FRAME_SIZE = (int(FRAME_SIZE_WIDTH), int(FRAME_SIZE_HEIGHT))
 
 
 # Tests for correct data
@@ -21,7 +46,7 @@ CALIBRATED_IMAGE_PATH = Path(".") / "calibrated-images" / MODEL_NAME
 CALIBRATED_IMAGE_PATH.mkdir(parents=True, exist_ok=True)
 
 if not UNCALIBRATED_IMAGES_PATH.exists():
-    raise Exception(f"Path {UNCALIBRATED_IMAGES_PATH} does not exist")
+    UNCALIBRATED_IMAGES_PATH.mkdir(parents=True, exist_ok=True)
 
 # Check even x odd chessboard size
 if CHESSBOARD_SIZE[0] % 2 != 0:
