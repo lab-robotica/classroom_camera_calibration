@@ -29,14 +29,15 @@ Install the following:
 
 The fill in the **environment variables** in the `.env` file (you can use the `.env.example` as reference):
 
-| Variable             | Type | Description          | Example            |
-| --------             | ---- | -----------          | -------            |
-| CHESSBOARD_SIZE_EVEN | int  | Chessboard side even | 16                 |
-| CHESSBOARD_SIZE_ODD  | int  | Chessboard side odd  | 19                 |
-| FRAME_SIZE_HEIGHT    | int  | Frame size in pixels | 1000               |
-| FRAME_SIZE_WIDTH     | int  | Frame size in pixels | 1000               |
-| IMAGE_EXTENSIONS     | str  | Image extension      | png                |
-| MODEL_NAME           | str  | Model of the camera  | logitech-model-100 |
+| Variable             | Type | Description                     | Example            |
+| --------             | ---- | -----------                     | -------            |
+| CHESSBOARD_SIZE_EVEN | int  | Chessboard side even            | 16                 |
+| CHESSBOARD_SIZE_ODD  | int  | Chessboard side odd             | 19                 |
+| FRAME_SIZE_HEIGHT    | int  | Frame size in pixels            | 1000               |
+| FRAME_SIZE_WIDTH     | int  | Frame size in pixels            | 1000               |
+| IMAGE_EXTENSIONS     | str  | Image extension                 | png                |
+| MODEL_NAME           | str  | Model of the camera             | logitech-model-100 |
+| CAMERA_INDEX         | int  | Camera index for getting images | 0                  |
 
 To see the calibration of some of the tests made, look into [cameras-configuration](cameras-configuration.csv)
 

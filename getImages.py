@@ -7,10 +7,10 @@ Cuando se active, guardas la foto con "s" y te sales con <esc>
 # Adapted by G00Z-G00Z
 
 import cv2
-from configuration import UNCALIBRATED_IMAGES_PATH
+from configuration import UNCALIBRATED_IMAGES_PATH, CAMERA_INDEX
 
 cap = cv2.VideoCapture(
-    2
+    CAMERA_INDEX
 )  # The index of the camera to use (usually 0 is for the internal, and 2 is for the external)
 
 num = 0
