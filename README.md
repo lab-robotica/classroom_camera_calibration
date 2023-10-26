@@ -16,7 +16,7 @@ To correctly calibrate the camera, you can follow the instructions bellow:
 ## Overview
 
 1. Install the dependencies
-2. Fill the configuration in `configuration.py`
+2. Fill the environment in `.env`
 3. Get not calibrated image using: `getImages.py`
 4. Calibrate the camera using `calibration.py`
 
