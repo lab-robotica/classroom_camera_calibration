@@ -1,10 +1,20 @@
 import pygame
+import pickle
 
 pygame.init()
 
 #Load the desire image
-img = pygame.image.load('/calibrated-images/logitech-c920-1/1.png')
+img = pygame.image.load('calibrated-images/logitech-c920-1/1.png')
 
+PATH_TO_CALIBRATION = "calibrated-images/logitech-c920-1/calibration.pkl"
+
+with open(PATH_TO_CALIBRATION, "rb") as file:
+  data = pickle.load(file)
+
+camera_matrix = data[0]
+dist = data[1]
+
+print(camera_matrix)   
 #Get the image size
 imageWidth, importHeight = img.get_size()
 
