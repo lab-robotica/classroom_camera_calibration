@@ -40,6 +40,7 @@ def main():
 
     images = glob.glob(f"{UNCALIBRATED_IMAGES_PATH.absolute()}/*.{IMAGE_EXTENSIONS}")
 
+    gray: MatLike | None = None
     for image in images:
         img = cv.imread(image)
         gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
@@ -65,8 +66,10 @@ def main():
 
     ############## CALIBRATION #######################################################
 
+    if gray is None:
+        raise RuntimeError("No images found")
     ret, cameraMatrix, dist, rvecs, tvecs = cv.calibrateCamera(
-        objpoints, imgpoints, FRAME_SIZE, None, None
+        objpoints, imgpoints, gray.shape[::-1], None, None
     )
 
     # Save the camera calibration result for later use (we won't worry about rvecs / tvecs)
