@@ -9,7 +9,6 @@ from pathlib import Path
 from configuration import (
     CHESSBOARD_SIZE,
     IMAGE_EXTENSIONS,
-    FRAME_SIZE,
     UNCALIBRATED_IMAGES_PATH,
     CALIBRATED_IMAGE_PATH,
 )
