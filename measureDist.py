@@ -65,6 +65,6 @@ while running:
 
             x, y = get_coordinates(camera_matrix, u, v, Z_MTS)
             print(f"Pixel at ({u},{v})")
-            print(f"Pixel at ({x},{v}) is {pixelColor}")
+            print(f"Pixel at ({x},{y}) is {pixelColor}")
 
 pygame.quit()
