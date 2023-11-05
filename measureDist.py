@@ -4,7 +4,7 @@ import numpy as np
 
 
 def get_coordinates(
-    camera_matrix: np.ndarray, u: int, v: int, z_mts: float
+    camera_matrix: np.ndarray, u: int, v: int, z_mts: float, image_size_uncalib: tuple[int, int], image_size_calib: tuple[int, int]
 ) -> tuple[float, float]:
     """
     Get the coordinates of a pixel in the image in meters
@@ -15,20 +15,23 @@ def get_coordinates(
     """
     fx = camera_matrix[0][0]
     fy = camera_matrix[1][1]
-    cx = camera_matrix[0][2]
-    cy = camera_matrix[1][2]
-
+    #cx = camera_matrix[0][2] * 375 / 640
+    #cy = camera_matrix[1][2] * 217 / 480
+    cx = camera_matrix[0][2] * image_size_calib[0] / image_size_uncalib[0]
+    cy = camera_matrix[1][2] * image_size_calib[1] / image_size_uncalib[1]
+    
     x = (u - cx) * z_mts / fx
     y = -(v - cy) * z_mts / fy
 
     return x, y
 
 
-Z_MTS = 2.5  # m
+Z_MTS = 2  # m
 pygame.init()
 
 # Load the desire image
 img = pygame.image.load("calibrated-images/logitech-c920-1/1.png")
+uncalib_img = pygame.image.load("uncalibrated-images/logitech-c920-1/1.png")
 
 PATH_TO_CALIBRATION = "calibrated-images/logitech-c920-1/calibration.pkl"
 
@@ -40,7 +43,13 @@ dist = data[1]
 
 print(camera_matrix)
 # Get the image size
+#Calibrated image
 imageWidth, importHeight = img.get_size()
+
+#Uncalibrated image
+imageWidth_uncalib, importHeight_uncalib = uncalib_img.get_size()
+
+print(imageWidth, importHeight)
 
 # Create a Pygame window with similar dimensions as the image
 screen = pygame.display.set_mode((imageWidth, importHeight))
@@ -63,7 +72,7 @@ while running:
                 (u, v)
             )  # Get the color of the pixel at the mouse click
 
-            x, y = get_coordinates(camera_matrix, u, v, Z_MTS)
+            x, y = get_coordinates(camera_matrix, u, v, Z_MTS, (imageWidth_uncalib, importHeight_uncalib), (imageWidth, importHeight))
             print(f"Pixel at ({u},{v})")
             print(f"Pixel at ({x},{y}) is {pixelColor}")
 
