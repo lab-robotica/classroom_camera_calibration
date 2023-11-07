@@ -26,23 +26,24 @@ def get_coordinates(
     return x, y
 
 
-Z_MTS = 2  # m
+Z_MTS = 2.7  # m
 pygame.init()
 
 # Load the desire image
-img = pygame.image.load("calibrated-images/logitech-c920-1/1.png")
-uncalib_img = pygame.image.load("uncalibrated-images/logitech-c920-1/1.png")
+img = pygame.image.load("calibrated-images/imagenes-salon/binaryImage1.png")
+uncalib_img = pygame.image.load("calibrated-images/imagenes-salon/1.jpeg")
 
-PATH_TO_CALIBRATION = "calibrated-images/logitech-c920-1/calibration.pkl"
+#PATH_TO_CALIBRATION = "calibrated-images/logitech-c920-1/calibration.pkl"
 
 camera_matrix = np.array([[739.36622625, 0.0, 353.50814568], [0.0, 733.50533147, 230.28887648], [0.0, 0.0, 1.0]])
 dist_coeffs = np.array([0.17627588, -0.52527959, -0.0028872, 0.02267888, 0.91760016])
 
-with open(PATH_TO_CALIBRATION, "rb") as file:
-    data = pickle.load(file)
-
-camera_matrix = data[0]
-dist = data[1]
+# The calibration data is now hardcoded into the script
+# with open(PATH_TO_CALIBRATION, "rb") as file:
+#     data = pickle.load(file)
+# 
+# camera_matrix = data[0]
+# dist = data[1]
 
 print(camera_matrix)
 # Get the image size
